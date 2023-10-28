@@ -1,7 +1,10 @@
 /** @OnlyCurrentDoc */
 
+import { OnEditActions } from "./on-edit-actions";
+
 function onEdit(e) {
-  if (shouldPopulateCells(e)) {
+  const onEditActions = new OnEditActions(event);
+  if (onEditActions.shouldPopulateCells()) {
     populateCalculatedRow();
   }
 

@@ -116,8 +116,4 @@ const column = {
   isSecondRow: e => e.range.getColumn() === 2,
 };
 
-const isOnlyEmptyRow_ = e => e.range.getRow() === getFirstEmptyRow_();
-
-// const shouldPopulateCells = (e) => !column.isEmpty(e) && column.isSecondRow(e) && isOnlyEmptyRow_(e);
-const shouldPopulateCells = e => !column.isEmpty(e) && column.isSecondRow(e);
 const shouldDeleteCells = e => column.isEmpty(e) && column.isSecondRow(e);
