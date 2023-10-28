@@ -104,9 +104,3 @@ const populateCalculatedRow = () => {
 
   lastCell.offset(1, 0).activate();
 };
-
-const deleteCalculatedRow = e => {
-  const sheet = SpreadsheetApp.getActive();
-  const activeRow = sheet.getCurrentCell().getRow();
-  sheet.getRange(`C${activeRow}:${activeRow}`).clearContent();
-};
