@@ -1,17 +1,4 @@
-/*
- * Find the first empty row from top to bottom
- * @return Integer
- */
-const getFirstEmptyRow_ = () => {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet();
-  var column = sheet.getRange('C:C');
-  var values = column.getValues();
-  var ct = 0;
-  while (values[ct] && values[ct][0] != '') {
-    ct++;
-  }
-  return ct + 1;
-};
+import { FindFirstEmptyRow } from "./find/first-empty-row";
 
 /*
  * Select the last filled row of populated values
@@ -93,7 +80,7 @@ const fillReadingGap = (lastCell, firstEmptyRowNo) => {
 
 const populateCalculatedRow = () => {
   const lastCell = findLastCell();
-  const firstEmptyRowNo = getFirstEmptyRow_();
+  const firstEmptyRowNo = new FindFirstEmptyRow(SpreadsheetApp.getActive()).call('B');
   if (!lastCell.getValue()) {
     fillReadingGap(lastCell, firstEmptyRowNo);
   }
