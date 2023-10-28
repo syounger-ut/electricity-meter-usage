@@ -8,7 +8,7 @@ function onEdit(e) {
     populateCalculatedRow();
   }
 
-  if (shouldDeleteCells(e)) {
+  if (onEditActions.shouldDeleteCells()) {
     deleteCalculatedRow(e);
   }
 }

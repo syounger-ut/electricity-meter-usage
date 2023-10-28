@@ -110,10 +110,3 @@ const deleteCalculatedRow = e => {
   const activeRow = sheet.getCurrentCell().getRow();
   sheet.getRange(`C${activeRow}:${activeRow}`).clearContent();
 };
-
-const column = {
-  isEmpty: e => e.range.getValue() === '',
-  isSecondRow: e => e.range.getColumn() === 2,
-};
-
-const shouldDeleteCells = e => column.isEmpty(e) && column.isSecondRow(e);

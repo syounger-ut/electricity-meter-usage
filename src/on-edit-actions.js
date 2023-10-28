@@ -8,6 +8,11 @@ export class OnEditActions {
     return !column.isEmpty && column.isSecondColumn;
   }
 
+  shouldDeleteCells = () => {
+    const column = this.#column();
+    return column.isEmpty && column.isSecondColumn;
+  };
+
   #column = () => ({
     isEmpty: this.event.range.getValue() === '',
     isSecondColumn: this.event.range.getColumn() === 2,
