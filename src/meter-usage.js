@@ -1,16 +1,6 @@
 import { FindFirstEmptyRow } from "./find/first-empty-row";
 
 /*
- * Select the last filled row of populated values
- * @return void
- */
-const selectRow = rowNumber => {
-  const sheet = SpreadsheetApp.getActive();
-  const rangeToSelect = `C${rowNumber}:G${rowNumber}`;
-  sheet.getRange(rangeToSelect).activate();
-};
-
-/*
  * Autofill the selected row columns down to the target row
  * @return void
  */
@@ -80,13 +70,13 @@ const fillReadingGap = (lastCell, firstEmptyRowNo) => {
 
 const populateCalculatedRow = () => {
   const lastCell = findLastCell();
-  const firstEmptyRowNo = new FindFirstEmptyRow(SpreadsheetApp.getActive()).call('B');
+  const firstEmptyRow = new FindFirstEmptyRow(SpreadsheetApp.getActive()).call('B');
   if (!lastCell.getValue()) {
-    fillReadingGap(lastCell, firstEmptyRowNo);
+    fillReadingGap(lastCell, firstEmptyRow);
   }
 
-  selectRow(firstEmptyRowNo - 1);
-  const fillRange = `C${firstEmptyRowNo - 1}:G${firstEmptyRowNo}`;
+  new SelectRange(sheet).call(`C${firstEmptyRow - 1}:G${firstEmptyRow - 1}`);
+  const fillRange = `C${firstEmptyRow - 1}:G${firstEmptyRow}`;
   copyLastFilledRowFormulas(fillRange);
 
   lastCell.offset(1, 0).activate();
