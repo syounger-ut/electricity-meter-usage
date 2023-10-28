@@ -1,14 +1,14 @@
 /** @OnlyCurrentDoc */
 
-import { OnEditActions } from "./on-edit-actions";
+import { OnEditValidations } from "./validations/on-edit-validations";
 
 function onEdit(e) {
-  const onEditActions = new OnEditActions(event);
-  if (onEditActions.shouldPopulateCells()) {
+  const onEditValidations = new OnEditValidations(event);
+  if (onEditValidations.shouldPopulateCells()) {
     populateCalculatedRow();
   }
 
-  if (onEditActions.shouldDeleteCells()) {
+  if (onEditValidations.shouldDeleteCells()) {
     deleteCalculatedRow(e);
   }
 }

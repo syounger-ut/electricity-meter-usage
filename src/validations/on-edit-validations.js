@@ -1,4 +1,4 @@
-export class OnEditActions {
+export class OnEditValidations {
   constructor(event) {
     this.event = event;
   }
