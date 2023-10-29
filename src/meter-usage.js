@@ -13,7 +13,7 @@ export const populateCalculatedRow = (e, callback) => {
     );
   }
 
-  const selectedRange = new SelectRange(sheet).call(
+  const selectedRange = new SelectRange(e.source).call(
     `C${firstEmptyRow - 1}:G${firstEmptyRow - 1}`
   );
   const fillRange = `C${firstEmptyRow - 1}:G${firstEmptyRow}`;
