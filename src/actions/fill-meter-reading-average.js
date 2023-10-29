@@ -13,24 +13,34 @@ export class FillMeterReadingAverage {
    * @param {Integer} endRow The row number of the cell last edited.
    * @returns {void}
    */
-  call = (column, startRow, endRow) => {
+  call(column, startRow, endRow) {
     if (!column) {
-      throw new Error('FillMeterReadingAverage#call - The column property is missing');
+      throw new Error(
+        'FillMeterReadingAverage#call - The column property is missing'
+      );
     }
 
     if (!startRow) {
-      throw new Error('FillMeterReadingAverage#call - The startRow property is missing');
+      throw new Error(
+        'FillMeterReadingAverage#call - The startRow property is missing'
+      );
     }
 
     if (!endRow) {
-      throw new Error('FillMeterReadingAverage#call - The endRow property is missing');
+      throw new Error(
+        'FillMeterReadingAverage#call - The endRow property is missing'
+      );
     }
 
-    const cell = this.sheet.getRange(`${column}${startRow}:${column}${startRow}`);
-    
+    const cell = this.sheet.getRange(
+      `${column}${startRow}:${column}${startRow}`
+    );
+
     const rowCount = endRow - startRow;
-    
-    const formula = `=(($${column}$${startRow - 1}-$${column}$${endRow})/${rowCount})+${column}${startRow - 1}`;
+
+    const formula = `=(($${column}$${
+      startRow - 1
+    }-$${column}$${endRow})/${rowCount})+${column}${startRow - 1}`;
     cell.setFormula(formula);
 
     if (rowCount > 1) {

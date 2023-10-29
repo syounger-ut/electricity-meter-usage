@@ -3,17 +3,17 @@
  */
 export class ClearRange {
   /**
-  * @param sheet {SpreadsheetApp} The AppScripts Google Sheet to work with
-  */
- constructor(sheet) {
-   this.sheet = sheet;
+   * @param sheet {SpreadsheetApp} The AppScripts Google Sheet to work with
+   */
+  constructor(sheet) {
+    this.sheet = sheet;
   }
 
   /**
    * Clears the content of the range provided.
    * @param {String} range - The range to be selected.
    */
-  call = (rangeA1Notation) => {
+  call(rangeA1Notation) {
     if (!rangeA1Notation) {
       throw new Error('ClearRange#call - No range was provided');
     }
@@ -26,7 +26,7 @@ export class ClearRange {
    * Selects a cell range.
    * @param {String} range - The range to be selected.
    */
-  #getRange = (range) => {
+  #getRange = range => {
     return this.sheet.getRange(range);
-  }
+  };
 }

@@ -3,18 +3,20 @@ export class OnEditValidations {
     this.event = event;
   }
 
-  shouldPopulateCells = () => {
+  shouldPopulateCells() {
     const column = this.#column();
     return !column.isEmpty && column.isSecondColumn;
   }
 
-  shouldDeleteCells = () => {
+  shouldDeleteCells() {
     const column = this.#column();
     return column.isEmpty && column.isSecondColumn;
-  };
+  }
 
-  #column = () => ({
-    isEmpty: this.event.range.getValue() === '',
-    isSecondColumn: this.event.range.getColumn() === 2,
-  });
+  #column() {
+    return {
+      isEmpty: this.event.range.getValue() === '',
+      isSecondColumn: this.event.range.getColumn() === 2,
+    };
+  }
 }

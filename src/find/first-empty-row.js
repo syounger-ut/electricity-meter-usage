@@ -9,11 +9,11 @@ export class FindFirstEmptyRow {
     this.sheet = sheet;
   }
 
-  /** 
+  /**
    * @param {String} column - The column to search.
    * @return {Number} The row number of the first empty row.
-  */
-  call = (column) => {
+   */
+  call(column) {
     if (!column) {
       throw new Error('FirstEmptyRow#call - No column was provided');
     }
@@ -25,13 +25,13 @@ export class FindFirstEmptyRow {
       row++;
     }
     return row + 1;
-  };
+  }
 
-    /**
+  /**
    * Selects a cell range.
    * @param {String} column - The column to be selected.
    */
-    #getRange = (column) => {
-      return this.sheet.getRange(`${column}:${column}`);
-    }
+  #getRange(column) {
+    return this.sheet.getRange(`${column}:${column}`);
+  }
 }
