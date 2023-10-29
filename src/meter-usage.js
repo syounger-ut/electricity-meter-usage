@@ -47,16 +47,16 @@ const fillReadingGap = (lastCell, firstEmptyRowNo) => {
   new AutoFillRange(SpreadSheetApp.getActive()).call(firstEmptyCell, fillRange);
 };
 
-const populateCalculatedRow = (e) => {
-  const lastCell = e.range.activate();
+export const populateCalculatedRow = (e, callback) => {
+  const cell = e.range;
   const firstEmptyRow = new FindFirstEmptyRow(e.source).call('B');
-  if (!lastCell.getValue()) {
-    fillReadingGap(lastCell, firstEmptyRow);
+  if (!cell.getValue()) {
+    fillReadingGap(cell, firstEmptyRow);
   }
 
   const selectedRange = new SelectRange(sheet).call(`C${firstEmptyRow - 1}:G${firstEmptyRow - 1}`);
   const fillRange = `C${firstEmptyRow - 1}:G${firstEmptyRow}`;
   new AutoFillRange(e.source).call(selectedRange, fillRange);
 
-  lastCell.offset(1, 0).activate();
+  callback(e);
 };
