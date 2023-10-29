@@ -18,7 +18,7 @@ export class FindFirstEmptyRow {
       throw new Error('FirstEmptyRow#call - No column was provided');
     }
 
-    var range = this.#getRange(column);
+    var range = this.getRange(column);
     var values = range.getValues();
     var row = 0;
     while (values[row] && values[row][0] != '') {
@@ -31,7 +31,7 @@ export class FindFirstEmptyRow {
    * Selects a cell range.
    * @param {String} column - The column to be selected.
    */
-  #getRange(column) {
+  getRange(column) {
     return this.sheet.getRange(`${column}:${column}`);
   }
 }

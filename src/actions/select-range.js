@@ -19,7 +19,7 @@ export class SelectRange {
       throw new Error('SelectRange#call - no range property was provided');
     }
 
-    const selectedRange = this.#getRange(range);
+    const selectedRange = this.getRange(range);
     selectedRange.activate();
 
     return selectedRange;
@@ -30,7 +30,7 @@ export class SelectRange {
    * @param {string} range The range to be selected.
    * @returns {Object} The selected range.
    */
-  #getRange(range) {
+  getRange(range) {
     return this.sheet.getRange(range);
   }
 }

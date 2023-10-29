@@ -4,16 +4,16 @@ export class OnEditValidations {
   }
 
   shouldPopulateCells() {
-    const column = this.#column();
+    const column = this.column();
     return !column.isEmpty && column.isSecondColumn;
   }
 
   shouldDeleteCells() {
-    const column = this.#column();
+    const column = this.column();
     return column.isEmpty && column.isSecondColumn;
   }
 
-  #column() {
+  column() {
     return {
       isEmpty: this.event.range.getValue() === '',
       isSecondColumn: this.event.range.getColumn() === 2,

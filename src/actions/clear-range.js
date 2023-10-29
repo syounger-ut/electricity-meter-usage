@@ -18,7 +18,7 @@ export class ClearRange {
       throw new Error('ClearRange#call - No range was provided');
     }
 
-    const range = this.#getRange(rangeA1Notation);
+    const range = this.getRange(rangeA1Notation);
     range.clearContent();
   }
 
@@ -26,7 +26,7 @@ export class ClearRange {
    * Selects a cell range.
    * @param {String} range - The range to be selected.
    */
-  #getRange = range => {
+  getRange(range) {
     return this.sheet.getRange(range);
-  };
+  }
 }
