@@ -49,14 +49,14 @@ const fillReadingGap = (lastCell, firstEmptyRowNo) => {
 
 const populateCalculatedRow = (e) => {
   const lastCell = e.range.activate();
-  const firstEmptyRow = new FindFirstEmptyRow(SpreadsheetApp.getActive()).call('B');
+  const firstEmptyRow = new FindFirstEmptyRow(e.source).call('B');
   if (!lastCell.getValue()) {
     fillReadingGap(lastCell, firstEmptyRow);
   }
 
   const selectedRange = new SelectRange(sheet).call(`C${firstEmptyRow - 1}:G${firstEmptyRow - 1}`);
   const fillRange = `C${firstEmptyRow - 1}:G${firstEmptyRow}`;
-  new AutoFillRange(SpreadsheetApp.getActive()).call(selectedRange, fillRange);
+  new AutoFillRange(e.source).call(selectedRange, fillRange);
 
   lastCell.offset(1, 0).activate();
 };
