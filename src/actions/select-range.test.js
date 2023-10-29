@@ -21,9 +21,10 @@ describe('SelectRange', () => {
 
     describe('when a range is provided', () => {
       const subject = new SelectRange(createSheet());
+      let response;
 
       beforeEach(() => {
-        subject.call('B1:G2');
+        response = subject.call('B1:G2');
       });
 
       it('should call sheet#getRange', () => {
@@ -32,6 +33,10 @@ describe('SelectRange', () => {
 
       it('should call range#activate', () => {
         expect(mockActivate).toHaveBeenCalled();
+      });
+
+      it('should return the selected range', () => {
+        expect(response).toEqual(mockGetRange());
       });
     });
   });

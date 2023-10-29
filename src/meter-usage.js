@@ -1,22 +1,5 @@
 import { FindFirstEmptyRow } from "./find/first-empty-row";
-
-/*
- * Autofill the selected row columns down to the target row
- * @return void
- */
-const copyLastFilledRowFormulas = fillRange => {
-  const sheet = SpreadsheetApp.getActive();
-  sheet
-    .getActiveRange()
-    .autoFill(
-      sheet.getRange(fillRange),
-      SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES
-    );
-};
-
-const findLastCell = () => {
-  return SpreadsheetApp.getActiveSpreadsheet().getCurrentCell();
-};
+import { AutoFillRange } from "./actions/auto-fill-range";
 
 const staticCellReference = cell => {
   const cellA1Notation = cell.getA1Notation();
@@ -57,27 +40,23 @@ const fillReadingGap = (lastCell, firstEmptyRowNo) => {
   );
 
   // Copy the formula down
-  // 603
-  console.log('lastFilledRowCell: ', firstEmptyCell.getRow());
-  // 7
-  console.log('rangeDiff: ', rangeDiff - 1);
   firstEmptyCell.activate();
   const fillRange = `B${firstEmptyCell.getRow()}:B${
     firstEmptyCell.getRow() + rangeDiff - 1
   }`;
-  copyLastFilledRowFormulas(fillRange);
+  new AutoFillRange(SpreadSheetApp.getActive()).call(firstEmptyCell, fillRange);
 };
 
-const populateCalculatedRow = () => {
-  const lastCell = findLastCell();
+const populateCalculatedRow = (e) => {
+  const lastCell = e.range.activate();
   const firstEmptyRow = new FindFirstEmptyRow(SpreadsheetApp.getActive()).call('B');
   if (!lastCell.getValue()) {
     fillReadingGap(lastCell, firstEmptyRow);
   }
 
-  new SelectRange(sheet).call(`C${firstEmptyRow - 1}:G${firstEmptyRow - 1}`);
+  const selectedRange = new SelectRange(sheet).call(`C${firstEmptyRow - 1}:G${firstEmptyRow - 1}`);
   const fillRange = `C${firstEmptyRow - 1}:G${firstEmptyRow}`;
-  copyLastFilledRowFormulas(fillRange);
+  new AutoFillRange(SpreadsheetApp.getActive()).call(selectedRange, fillRange);
 
   lastCell.offset(1, 0).activate();
 };

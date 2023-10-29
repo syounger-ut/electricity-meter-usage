@@ -12,7 +12,7 @@ export class SelectRange {
 /** 
  * Selects and activates a range in the sheet.
  * @param {string} range The range to be activated.
- * @returns {void}
+ * @returns {Object} The selected range.
 */
 call = (range) => {
   if (!range) {
@@ -21,6 +21,8 @@ call = (range) => {
 
   const selectedRange = this.#getRange(range);
   selectedRange.activate();
+
+  return selectedRange;
 }
 
 /**
