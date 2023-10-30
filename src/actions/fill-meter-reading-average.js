@@ -39,8 +39,8 @@ export class FillMeterReadingAverage {
     const rowCount = endRow - startRow;
 
     const formula = `=(($${column}$${
-      startRow - 1
-    }-$${column}$${endRow})/${rowCount})+${column}${startRow - 1}`;
+      endRow
+    }-$${column}$${startRow - 1})/${rowCount - 1})+${column}${startRow - 1}`;
     cell.setFormula(formula);
 
     if (rowCount > 1) {

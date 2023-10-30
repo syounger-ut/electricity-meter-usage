@@ -1,5 +1,4 @@
 {
-  "plugins": ["@babel/plugin-transform-property-mutators"],
   "presets": [
     [
       "@babel/preset-env",
@@ -7,8 +6,5 @@
         "modules": "commonjs"
       }
     ]
-  ],
-  "ignore": [
-    "**/*.test.js"
   ]
 }

@@ -52,7 +52,7 @@ describe('FillMeterReadingAverage', () => {
   
       it('should call range#setFormula', () => {
         subject.call('A', 5, 10);
-        expect(mockSetFormula).toHaveBeenCalledWith('=(($A$4-$A$10)/5)+A4');
+        expect(mockSetFormula).toHaveBeenCalledWith('=(($A$10-$A$4)/4)+A4');
       });
 
       describe('when the rowCount is greater than one', () => {
