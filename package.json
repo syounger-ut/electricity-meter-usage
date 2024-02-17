@@ -3,17 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "meter-usage.js",
+  "type": "module",
   "scripts": {
-    "build": "babel src --out-file build/app.js --ignore 'src/**/*.test.js'",
+    "build": "rollup -c",
     "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.23.9",
-    "@babel/core": "^7.23.2",
-    "@babel/plugin-transform-modules-commonjs": "^7.23.0",
-    "@babel/preset-env": "^7.23.2",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "rollup": "^4.12.0"
   }
 }
