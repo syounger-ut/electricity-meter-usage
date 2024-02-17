@@ -31,7 +31,7 @@ export class AutoFillRange {
 
     selectedRange.autoFill(
       this.sheet.getRange(fillRange),
-      this.sheet.AutoFillSeries.DEFAULT_SERIES
+      SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES
     );
   }
 }

@@ -1,6 +1,7 @@
 import { FindFirstEmptyRow } from './find/first-empty-row';
 import { AutoFillRange } from './actions/auto-fill-range';
 import { FillMeterReadingAverage } from './actions/fill-meter-reading-average';
+import { SelectRange } from "./actions/select-range.js";
 
 export const populateCalculatedRow = (e, callback) => {
   const cell = e.range;
