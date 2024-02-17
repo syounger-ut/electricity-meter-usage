@@ -13,7 +13,18 @@ const createSheet = () => ({
   },
 });
 
+
+const mockDefaultSeries = 'mock-default-series';
+
 describe('AutoFillRange', () => {
+  beforeEach(() => {
+    global.SpreadsheetApp = {
+      AutoFillSeries: {
+        DEFAULT_SERIES: mockDefaultSeries,
+      }
+    };
+  });
+
   describe('#call', () => {
     const subject = new AutoFillRange(createSheet());
 
@@ -47,12 +58,8 @@ describe('AutoFillRange', () => {
       it('should call selectedRange#autoFill', () => {
         expect(mockSelectedRange.autoFill).toHaveBeenCalledWith(
           mockGetRange('A1:A2'),
-          subject.sheet.AutoFillSeries.DEFAULT_SERIES,
+          mockDefaultSeries,
         );
-      });
-
-      it('should call sheet#AutoFillSeries.DEFAULT_SERIES', () => {
-
       });
     });
   });
