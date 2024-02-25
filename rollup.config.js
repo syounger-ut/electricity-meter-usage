@@ -3,6 +3,5 @@ export default {
     output: {
         file: 'build/main.js',
         format: 'cjs',
-        sourceMap: 'inline'
     }
 };
