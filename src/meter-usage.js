@@ -25,7 +25,6 @@ export const populateCalculatedRow = (e, callback) => {
       `C${firstEmptyRow - 2}:G${firstEmptyRow - 2}`
     );
     const fillRange = `C${firstEmptyRow - 2}:G${firstEmptyRow - 1}`;
-    console.log('fillRange: ', fillRange);
     new AutoFillRange(e.source).call(selectedRange, fillRange);
   }
 

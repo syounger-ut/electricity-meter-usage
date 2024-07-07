@@ -52,7 +52,7 @@ describe('FillMeterReadingAverage', () => {
   
       it('should call range#setFormula', () => {
         subject.call('A', 5, 10);
-        expect(mockSetFormula).toHaveBeenCalledWith('=(($A$10-$A$4)/4)+A4');
+        expect(mockSetFormula).toHaveBeenCalledWith('=(($A$10-$A$4)/6)+A4');
       });
 
       describe('when the rowCount is greater than one', () => {
@@ -64,7 +64,7 @@ describe('FillMeterReadingAverage', () => {
 
       describe('when the rowCount is one', () => {
         it('should not call the autoFillRange service', () => {
-          subject.call('A', 5, 6);
+          subject.call('A', 5, 5);
           expect(mockAutoFillRangeCall).not.toHaveBeenCalled();
         });
       });
